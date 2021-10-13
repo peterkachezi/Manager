@@ -1,0 +1,504 @@
+﻿
+
+
+<form id="frmRegisterStudent">
+
+    <div class="col-md-6 col-sm-6  ">
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2><i class="fa fa-align-left"></i> Register / Student @*<small>Sessions</small>*@</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <!-- start accordion -->
+                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel">
+                        <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h4 class="panel-title">Student Information #1</h4>
+                        </a>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        First Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="first-name" required="required" class="form-control name" name="FirstName">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="middle-name" class="form-control" type="text" name="MiddleName">
+                                    </div>
+                                </div>
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        Last Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="LastName" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Joining Date<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="date" id="first-name" required="required" class="form-control name" name="JoiningDate" value='@DateTime.Now.ToString("yyyy-MM-dd")'>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Select Gender<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+
+                                        <select name="Gender" class="form-control" id="Gender">
+
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                        Date Of Birth <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="middle-name" class="form-control" type="date" name="DateOfBirth" value='@DateTime.Now.ToString("yyyy-MM-dd")'>
+
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        Home Town <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="HomeTown" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Select County <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+
+                                        <select name="CountyId" class="form-control">
+                                            @if (ViewBag.County != null)
+                                            {
+                                                foreach (var item in ViewBag.County)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Birth Certificate Number <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="first-name" required="required" class="form-control name" name="BirthCertificateNumber">
+                                    </div>
+                                </div>
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Adm Number <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="first-name" required="required" class="form-control name" name="AdmNumber">
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h4 class="panel-title"> Parent / Guardian Information #2</h4>
+                        </a>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        First Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="first-name" required="required" class="form-control" name="ParentFirstName">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Middle Name / Initial</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="middle-name" class="form-control" type="text" name="ParentMiddleName">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        Last Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="ParentLastName" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        Phone Number<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="PhoneNumber" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        ID Number<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="IdNumber" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        EmailAddress<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="EmailAddress" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h4 class="panel-title"> Classes & Streams #3</h4>
+                        </a>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Select Class <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+
+
+                                        <select name="ClassName" class="form-control" id="txtClassName">
+
+                                            <option value="">Select Class</option>
+                                            @if (ViewBag.Classes != null)
+                                            {
+                                                foreach (var item in ViewBag.Classes)
+                                                {
+                                                    <option value="@item.Name">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Select Stream <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+
+                                        <select class="form-control" id="departmentsDropdown" name="StreamId">
+                                        </select>
+
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                                        Available Space<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="last-name" name="IdNumber" required="required" class="form-control">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <a class="panel-heading collapsed" role="tab" id="headingFour" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <h4 class="panel-title">  Hostels & Rooms #4</h4>
+                        </a>
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                            <div class="panel-body">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Select Student Type <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+
+                                        <select name="IsBoarder" class="form-control" id="isStudentType">
+                                            <option value="0">Select Student Type</option>
+                                            <option value="1">Boarder Student</option>
+                                            <option value="2">Day Student</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="item form-group" id="divHostel" style="display:none;">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                                        Select Hostel <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+
+                                        <select name="HostelId" class="form-control" id="txtHostel">
+                                            <option value="0">Select Hostel</option>
+
+
+                                            @if (ViewBag.Hostel != null)
+                                            {
+                                                foreach (var item in ViewBag.Hostel)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="item form-group" id="divSpace" style="display:none;">
+                                    <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Available Space</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="txtCapacity" class="form-control" type="text" name="HostelCapacity">
+                                    </div>
+                                </div>
+
+                                <div class="item form-group" style="position:center;">
+                                    <div class="col-md-6 col-sm-6 offset-md-3">
+
+                                        <button type="button" class="btn btn-success" id="btnSubmit">Submit</button>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- end of accordion -->
+
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<link href="~/Content/sweetalart/sweetalert.min.css" rel="stylesheet" />
+<script src="~/Content/sweetalart/sweetalert.min.js"></script>
+
+<script>
+
+    //$(document).ready(function () {
+    //    $.ajax({
+    //        type: "GET",
+    //        url: "/Administrator/Students/getDepartment",
+    //        data: "{}",
+    //        success: function (data) {
+    //            var s = '<option value="-1">Select Stream</option>';
+    //            for (var i = 0; i < data.length; i++) {
+    //                s += '<option value="' + data[i].Id + '">' + data[i].StreamName + '</option>';
+    //            }
+    //            $("#departmentsDropdown").html(s);
+    //        }
+    //    });
+    //});
+
+    $("#btnSubmit").click(function () {
+        //debugger
+
+        var data = $("#frmRegisterStudent").serialize();
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/Students/Create",
+            data: data,
+
+            success: function (response) {
+                if (response.success) {
+
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+
+
+                    }), setTimeout(function () { window.location = "/Administrator/Students/Index"; }, 3000);
+
+                } else {
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+
+
+    $(function () {
+
+        $('#isStudentType').change(function () {
+
+            var value = $(this).val();
+
+            if (value == '1') {
+
+                $('#divHostel').show();
+                $('#divSpace').show();
+
+            }
+
+            else {
+                $('#divHostel').hide();
+                $('#divSpace').hide();
+
+            }
+        });
+    });
+
+
+
+
+    $('#txtHostel').change(function () {
+
+        var id = document.getElementById('txtHostel').value;
+
+        $.get("/Administrator/Hostels/GetHostelById/?Id=" + id, function (data, status) {
+            console.log(data);
+            if (data == null) {
+                alert("Does not exist");
+            } else {
+
+                $("#txtId").val(data.data.Id);
+                $("#txtCapacity").val(data.data.Capacity);
+
+            }
+
+
+            console.log(data);
+        });
+    });
+
+
+    $('#txtClassName').change(function () {
+        var Name = document.getElementById('txtClassName').value;
+
+        $.ajax({
+            url: "/Administrator/Students/GetStream/",
+            data: { 'Name': Name },
+            type: "post",
+            cache: false,
+
+            success: function (data) {
+
+                var s = '<option value="-1">Select Stream</option>';
+
+                for (var i = 0; i < data.length; i++) {
+
+                    s += '<option value="' + data[i].StreamId + '">' + data[i].StreamName + '</option>';
+
+                }
+
+                $("#departmentsDropdown").html(s);
+            }
+        });
+    });
+
+
+
+</script>

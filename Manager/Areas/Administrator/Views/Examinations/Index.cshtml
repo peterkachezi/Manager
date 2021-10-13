@@ -1,0 +1,370 @@
+﻿<form action="~/Administrator/Examinations/Index/" class="form-group">
+</form>
+
+<div class="col-md-6 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Form Design <small></small></h2>
+
+    
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
+
+
+
+
+            <form class="form-label-left input_mask" action="~/Administrator/Examinations/GetStudents/" method="post">
+
+
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 ">Select Class</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <select name="ClassName" class="form-control" id="txtClassName">
+
+                            <option value="">Select Class</option>
+                            @if (ViewBag.Classes != null)
+                            {
+                                foreach (var item in ViewBag.Classes)
+                                {
+                                    <option value="@item.Name">@item.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 ">Select Stream </label>
+                    <div class="col-md-9 col-sm-9 ">
+
+                        <select class="form-control" id="streamDropdown" name="StreamName">
+                        </select>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 "> Select Term</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <select name="StreamName" class="form-control">
+                            <option value="1">Term 1</option>
+                            <option value="2">Term 2</option>
+                            <option value="3">Term 3</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-form-label col-md-3 col-sm-3 "> Exam Year</label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input type="text" class="form-control" name="ExamYear" placeholder="e.g 2022" />
+                    </div>
+                </div>
+
+
+                <div class="ln_solid"></div>
+                <div class="form-group row">
+                    <div class="col-md-9 col-sm-9  offset-md-3">
+
+                        <button type="submit" class="btn btn-success pull-right">Submit</button>
+                        <button class="btn btn-primary pull-right" type="reset">Reset</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link href="~/Content/sweetalart/sweetalert.min.css" rel="stylesheet" />
+<script src="~/Content/sweetalart/sweetalert.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+
+
+
+    $('#txtClassName').change(function () {
+        var Name = document.getElementById('txtClassName').value;
+
+        $.ajax({
+            url: "/Administrator/Students/GetStream/",
+            data: { 'Name': Name },
+            type: "post",
+            cache: false,
+
+            success: function (data) {
+
+                var s = '<option value="-1">Select Stream</option>';
+
+                for (var i = 0; i < data.length; i++) {
+
+                    s += '<option value="' + data[i].StreamId + '">' + data[i].StreamName + '</option>';
+                }
+
+                $("#streamDropdown").html(s);
+
+                console.log(s);
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+    $("#btnSubmit").click(function () {
+        //debugger
+        $("#SubmitResultModal").modal('hide');
+
+        var data = $("#frmSubmitResults").serialize();
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/Examinations/Create/", // NB: Use the correct action name
+            data: data,
+
+            success: function (response) {
+                if (response.success) {
+                    // Display success message
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+                        // timer: 5000,
+
+                    }), setTimeout(function () { location.reload(); }, 3000);
+
+                } else {
+                    // Display error message
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+            // Display error message from db
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+
+    $("#btnSubmitEdited").click(function () {
+        //debugger
+        $("#ModalUpdateStudents").modal('hide');
+
+        var data = $("#frmUpdateStudents").serialize();
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/Students/UpdateStudents", // NB: Use the correct action name
+            data: data,
+
+            success: function (response) {
+                if (response.success) {
+                    // Display success message
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+                        // timer: 5000,
+
+                    }), setTimeout(function () { location.reload(); }, 3000);
+
+                } else {
+                    // Display error message
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+            // Display error message from db
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+
+    function GetSubjects(e) {
+
+        var id = e;
+
+        $("#ModalTitle").html("Edit Record");
+
+        $.get("/Administrator/Examinations/GetById/?Id=" + id, function (data, status) {
+
+            if (data == null) {
+                alert("Does not exist");
+            } else {
+
+                $("#txtId").val(data.data.Id);
+                $("#txtEnglish").val(data.data.English);
+                $("#txtKiswahili").val(data.data.Kiswahili);
+                $("#txtMathematics").val(data.data.Mathematics);
+                $("#txtBiology").val(data.data.Biology);
+                $("#txtChemestry").val(data.data.Chemestry);
+                $("#txtPhysics").val(data.data.Physics);
+                $("#txtHistoryGovernment").val(data.data.HistoryGovernment);
+                $("#txtCRE").val(data.data.CRE);
+                $("#txtGeography").val(data.data.Geography);
+                $("#txtAgriculture").val(data.data.Agriculture);
+                $("#txtArtDesign").val(data.data.ArtDesign);
+                $("#txtBuildingConstruction").val(data.data.BuildingConstruction);
+                $("#txtBussinessManagement").val(data.data.BussinessManagement);
+                $("#txtComputerStudies").val(data.data.ComputerStudies);
+                $("#txtFrench").val(data.data.French);
+                $("#txtGerman").val(data.data.German);
+                $("#txtHomeScience").val(data.data.HomeScience);
+                $("#txtMusic").val(data.data.Music);
+
+
+
+
+
+
+
+
+
+
+            }
+
+            $('#SubmitResultModal').modal({ backdrop: 'static', keyboard: false })
+
+            $("#SubmitResultModal").modal('show');
+
+
+            console.log(data);
+        });
+    };
+
+    function DeleteRecord(e) {
+
+        var id = e;
+
+        swal(
+
+            {
+                title: "Are you sure?",
+
+                text: "Once deleted, you will not be able to recover this  file!",
+
+                type: "success",
+
+                showCancelButton: true,
+
+                confirmButtonColor: "##62b76e",
+
+                confirmButtonText: "Yes, Procceed!",
+
+                closeOnConfirm: false
+            },
+
+            function () {
+
+                $.ajax({
+
+                    type: "GET",
+
+                    url: "/Administrator/ProductCategory/DeleteCategory/" + id,
+
+                    success: function (response) {
+
+                        if (response.success) {
+
+                            swal({
+
+                                position: 'top-end',
+
+                                type: "success",
+
+                                title: response.responseText,
+
+                                showConfirmButton: false,
+
+                                // timer: 2000,
+
+                            });
+                            setTimeout(function () { location.reload(); }, 3000);
+
+                        }
+
+                        else {
+                            swal({
+                                position: 'top-end',
+                                type: "error",
+                                title: response.responseText,
+                                showConfirmButton: true,
+                                timer: 5000,
+                            });
+
+                        }
+
+                    },
+                    error: function (response) {
+                        swal({
+                            position: 'top-end',
+                            type: "error",
+                            title: "Server error ,kindly contact the admin for assistance",
+                            showConfirmButton: false,
+                            timer: 5000,
+                        });
+
+                    }
+
+                })
+
+            }
+        );
+    }
+
+
+
+
+</script>

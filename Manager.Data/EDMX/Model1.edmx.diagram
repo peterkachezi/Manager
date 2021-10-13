@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6c4d48c8fd84916b7386f8d4c5665c7" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentModel.AdmissionNumber" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentModel.AspNetRole" Width="1.5" PointX="0.75" PointY="83.25" />
+        <EntityTypeShape EntityType="StudentModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="114.875" />
+        <EntityTypeShape EntityType="StudentModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="90.5" />
+        <EntityTypeShape EntityType="StudentModel.AspNetUser" Width="1.5" PointX="3" PointY="77.75" />
+        <EntityTypeShape EntityType="StudentModel.Attendance" Width="1.5" PointX="5.25" PointY="93.125" />
+        <EntityTypeShape EntityType="StudentModel.Author" Width="1.5" PointX="5.25" PointY="63.875" />
+        <EntityTypeShape EntityType="StudentModel.BookMovement" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudentModel.Book" Width="1.5" PointX="5.25" PointY="86.5" />
+        <EntityTypeShape EntityType="StudentModel.County" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudentModel.Department" Width="1.5" PointX="5.25" PointY="105.75" />
+        <EntityTypeShape EntityType="StudentModel.Designation" Width="1.5" PointX="5.25" PointY="73.5" />
+        <EntityTypeShape EntityType="StudentModel.Employee" Width="1.5" PointX="10.5" PointY="86.875" />
+        <EntityTypeShape EntityType="StudentModel.Examination" Width="1.5" PointX="26.25" PointY="87.125" />
+        <EntityTypeShape EntityType="StudentModel.Expens" Width="1.5" PointX="7.5" PointY="72.75" />
+        <EntityTypeShape EntityType="StudentModel.ExpenseType" Width="1.5" PointX="5.25" PointY="58" />
+        <EntityTypeShape EntityType="StudentModel.FeeType" Width="1.5" PointX="5.25" PointY="80" />
+        <EntityTypeShape EntityType="StudentModel.fileUpload" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentModel.Furniture" Width="1.5" PointX="5.25" PointY="61" />
+        <EntityTypeShape EntityType="StudentModel.GradingHumanity" Width="1.5" PointX="5.25" PointY="99.375" />
+        <EntityTypeShape EntityType="StudentModel.GradingLanguage" Width="1.5" PointX="5.25" PointY="108.625" />
+        <EntityTypeShape EntityType="StudentModel.GradingMathematic" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="StudentModel.GradingScience" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentModel.GradingTechnical" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="StudentModel.Hostel" Width="1.5" PointX="5.25" PointY="55" />
+        <EntityTypeShape EntityType="StudentModel.Instituiton" Width="1.5" PointX="5.25" PointY="82.625" />
+        <EntityTypeShape EntityType="StudentModel.InstitutionClass" Width="1.5" PointX="12.75" PointY="84.875" />
+        <EntityTypeShape EntityType="StudentModel.IssuedFurniture" Width="1.5" PointX="7.5" PointY="61" />
+        <EntityTypeShape EntityType="StudentModel.LeaveSheet" Width="1.5" PointX="26.25" PointY="82.75" />
+        <EntityTypeShape EntityType="StudentModel.Parent" Width="1.5" PointX="26.25" PointY="94.625" />
+        <EntityTypeShape EntityType="StudentModel.Publisher" Width="1.5" PointX="5.25" PointY="112.125" />
+        <EntityTypeShape EntityType="StudentModel.ResultsAgriculture" Width="1.5" PointX="18" PointY="73.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsArtDesign" Width="1.5" PointX="15" PointY="77.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsBiology" Width="1.5" PointX="21" PointY="77.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsBuildingConstruction" Width="1.5" PointX="18" PointY="88.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsBusiness" Width="1.5" PointX="15" PointY="87.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsChemistry" Width="1.5" PointX="15" PointY="82.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsComputerStudy" Width="1.5" PointX="15" PointY="72.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsCRE" Width="1.5" PointX="18" PointY="83.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsEnglish" Width="1.5" PointX="18" PointY="78.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsFrench" Width="1.5" PointX="21" PointY="82.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsGeography" Width="1.5" PointX="21" PointY="87.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsGerman" Width="1.5" PointX="15" PointY="92.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsHistory" Width="1.5" PointX="21" PointY="92.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsHomeScience" Width="1.5" PointX="24" PointY="87.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsKiswahili" Width="1.5" PointX="21" PointY="72.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsMath" Width="1.5" PointX="24" PointY="77.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsMusic" Width="1.5" PointX="24" PointY="92.75" />
+        <EntityTypeShape EntityType="StudentModel.ResultsPhysic" Width="1.5" PointX="24" PointY="82.75" />
+        <EntityTypeShape EntityType="StudentModel.Stream" Width="1.5" PointX="5.25" PointY="96.25" />
+        <EntityTypeShape EntityType="StudentModel.Student" Width="1.5" PointX="18" PointY="93.375" />
+        <EntityTypeShape EntityType="StudentModel.SubjectCategory" Width="1.5" PointX="5.25" PointY="102.875" />
+        <EntityTypeShape EntityType="StudentModel.Subject" Width="1.5" PointX="7.5" PointY="90.125" />
+        <EntityTypeShape EntityType="StudentModel.Supplier" Width="1.5" PointX="5.25" PointY="66.625" />
+        <EntityTypeShape EntityType="StudentModel.Test" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="StudentModel.Visitor" Width="1.5" PointX="5.25" PointY="76.5" />
+        <AssociationConnector Association="StudentModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="StudentModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="StudentModel.FK_Attendances_Attendances" />
+        <AssociationConnector Association="StudentModel.FK_Authors_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Books_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Departments_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Designations_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Employees_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Examinations_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Expenses_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ExpenseTypes_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_FeeTypes_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Furnitures_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_GradingHumanities_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_GradingLanguages_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Hostels_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Instituitons_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_InstitutionClasses_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_LeaveSheets_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Parents_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Publishers_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsAgricultures_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsArtDesigns_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBiologies_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBuildingConstructions_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBusinesses_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsChemistries_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsComputerStudies_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsCREs_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsEnglishes_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsFrenches_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsGeographies_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsGermen_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsHistories_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsHomeSciences_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsKiswahilis_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsMaths_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsMusics_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_ResultsPhysics_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Streams_Streams" />
+        <AssociationConnector Association="StudentModel.FK_Students_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_SubjectCategories_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Subjects_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Suppliers_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Visitors_AspNetUsers" />
+        <AssociationConnector Association="StudentModel.FK_Employees_Departments" />
+        <AssociationConnector Association="StudentModel.FK_Employees_Designations" />
+        <AssociationConnector Association="StudentModel.FK_InstitutionClasses_Employees" />
+        <AssociationConnector Association="StudentModel.FK_Exams_Students" />
+        <AssociationConnector Association="StudentModel.FK_Expenses_ExpenseTypes" />
+        <AssociationConnector Association="StudentModel.FK_IssuedFurnitures_Furnitures" />
+        <AssociationConnector Association="StudentModel.FK_InstitutionClasses_Streams" />
+        <AssociationConnector Association="StudentModel.FK_ResultsAgriculture_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsArtDesign_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBiology_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBuildingConstruction_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBusiness_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsChemistry_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsComputerStudies_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsCRE_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsEnglish_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsFrench_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsGeography_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsGerman_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsHistory_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsHomeScience_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsKiswahili_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsMaths_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsMusic_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_ResultsPhysics_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_Students_InstitutionClasses" />
+        <AssociationConnector Association="StudentModel.FK_LeaveSheets_Students" />
+        <AssociationConnector Association="StudentModel.FK_Parents_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsAgriculture_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsArtDesign_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBiology_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBuildingConstruction_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsBusiness_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsChemistry_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsComputerStudies_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsCRE_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsEnglish_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsFrench_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsGeography_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsGerman_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsHistory_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsHomeScience_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsKiswahili_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsMaths_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsMusic_Students" />
+        <AssociationConnector Association="StudentModel.FK_ResultsPhysics_Students" />
+        <AssociationConnector Association="StudentModel.FK_Students_Streams" />
+        <AssociationConnector Association="StudentModel.FK_Students_Students" />
+        <AssociationConnector Association="StudentModel.FK_Subjects_SubjectCategories" />
+        <AssociationConnector Association="StudentModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

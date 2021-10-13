@@ -1,0 +1,403 @@
+﻿@model  IEnumerable<Manager.Data.DTOs.DesignationModule.DesignationDTO>
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Areas/Administrator/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <h6 class="Header"><i class="fa fa-table"></i> Designation</h6>
+                </div>
+                <div class="col-md-8">
+                    <button type="button" class="btn btn-success btn-sm  pull-right" data-toggle="modal" data-target="#CreateDesignationModal" data-backdrop="static" data-keyboard="false"><i class="fa fa-plus-circle"></i> Add Designation</button>
+                </div>
+
+            </div>
+
+
+            <!--<ul class="nav navbar-right panel_toolbox">
+            <li>
+                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>-->
+            @*<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Settings 1</a>
+                        <a class="dropdown-item" href="#">Settings 2</a>
+                    </div>
+                </li>*@
+            <!--<li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>-->
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap table-sm" cellspacing="0" width="100%">
+
+
+
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Create Date</th>
+                                    <th>Created By </th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    int count = 1;
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.CreateDate.ToString("dddd, dd MMMM yyyy")</td>
+                                            <td>@item.CreatedByName</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-success dropdown-toggle  btn-sm " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        Active
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="#" onclick="GetStream('@item.Id')" value="@item.Id">Edit</a>
+                                                        <a class="dropdown-item" href="#" onclick="DeleteRecord('@item.Id')" value="@item.Id">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        count++;
+                                    }
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="CreateDesignationModal" tabindex="-1" role="dialog" aria-labelledby="CreateDesignationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title Title" id="CreateDesignationModalLabel">Add Designation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-group" id="frmCreateDesignation">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <label class="text-dark">Name</label>
+                            <div>
+                                <input type="text" name="Name" class="form-control" />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" id="btnSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!------Edit Category-->
+<div class="modal fade" id="ModalUpdateDesignation" tabindex="-1" role="dialog" aria-labelledby="CreateDesignationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title Title" id="CreateDesignationModalLabel">Update Designation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-group" id="frmUpdateDesignation">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <label class="text-dark">Name</label>
+                            <div>
+                                <input type="hidden" name="Id" id="txtId" class="form-control" />
+                                <input type="text" name="Name" id="txtName" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" id="btnSubmitEdited">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!------end Edit Category-->
+
+<style>
+    .Title {
+        font-weight: 600;
+        color: #45ca9f;
+        font-size: 1.5rem;
+        line-height: 70px;
+        max-width: calc(100% - 40px);
+    }
+
+    .Header {
+        font-weight: 600;
+        color: #45ca9f;
+        font-size: 1.5rem;
+        max-width: calc(100% - 40px);
+    }
+</style>
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link href="~/Content/sweetalart/sweetalert.min.css" rel="stylesheet" />
+<script src="~/Content/sweetalart/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+
+    $("#btnSubmit").click(function () {
+        //debugger
+        $("#CreateDesignationModal").modal('hide');
+
+        var data = $("#frmCreateDesignation").serialize();
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/Designation/CreatDesignation", // NB: Use the correct action name
+            data: data,
+
+            success: function (response) {
+                if (response.success) {
+                    // Display success message
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+                        // timer: 5000,
+
+                    }), setTimeout(function () { location.reload(); }, 3000);
+
+                } else {
+                    // Display error message
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+            // Display error message from db
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+
+    $("#btnSubmitEdited").click(function () {
+        //debugger
+        $("#ModalUpdateDesignation").modal('hide');
+
+        var data = $("#frmUpdateDesignation").serialize();
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/Designation/UpdateDesignation", // NB: Use the correct action name
+            data: data,
+
+            success: function (response) {
+                if (response.success) {
+                    // Display success message
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+                        // timer: 5000,
+
+                    }), setTimeout(function () { location.reload(); }, 3000);
+
+                } else {
+                    // Display error message
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+            // Display error message from db
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+
+    function GetStream(e) {
+
+        var id = e;
+
+        $("#ModalTitle").html("Edit Record");
+
+        $.get("/Administrator/Designation/GetDesignationById/?Id=" + id, function (data, status) {
+            console.log(data);
+            if (data == null) {
+                alert("Does not exist");
+            } else {
+
+                $("#txtId").val(data.data.Id);
+                $("#txtName").val(data.data.Name);
+            }
+
+            $('#ModalUpdateDesignation').modal({ backdrop: 'static', keyboard: false })
+
+            $("#ModalUpdateDesignation").modal('show');
+
+
+            console.log(data);
+        });
+    };
+
+    function DeleteRecord(e) {
+
+        var id = e;
+
+        swal(
+
+            {
+                title: "Are you sure?",
+
+                text: "Once deleted, you will not be able to recover this  file!",
+
+                type: "success",
+
+                showCancelButton: true,
+
+                confirmButtonColor: "##62b76e",
+
+                confirmButtonText: "Yes, Procceed!",
+
+                closeOnConfirm: false
+            },
+
+            function () {
+
+                $.ajax({
+
+                    type: "GET",
+
+                    url: "/Administrator/ProductCategory/DeleteCategory/" + id,
+
+                    success: function (response) {
+
+                        if (response.success) {
+
+                            swal({
+
+                                position: 'top-end',
+
+                                type: "success",
+
+                                title: response.responseText,
+
+                                showConfirmButton: false,
+
+                                // timer: 2000,
+
+                            });
+                            setTimeout(function () { location.reload(); }, 3000);
+
+                        }
+
+                        else {
+                            swal({
+                                position: 'top-end',
+                                type: "error",
+                                title: response.responseText,
+                                showConfirmButton: true,
+                                timer: 5000,
+                            });
+
+                        }
+
+                    },
+                    error: function (response) {
+                        swal({
+                            position: 'top-end',
+                            type: "error",
+                            title: "Server error ,kindly contact the admin for assistance",
+                            showConfirmButton: false,
+                            timer: 5000,
+                        });
+
+                    }
+
+                })
+
+            }
+        );
+    }
+
+
+
+
+</script>

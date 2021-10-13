@@ -1,0 +1,240 @@
+﻿
+
+
+
+<div class="col-md-6 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Find Student <small></small></h2>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <div style="display:none;" id="divErrorSMS">
+
+
+                <div class="alert alert-danger" role="alert">
+                    <p>Error</p>
+                </div>
+
+            </div>
+
+
+            <form class="form-horizontal form-label-left">
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Enter Adm No</label>
+
+                    <div class="col-sm-9">
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="admNo">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" id="GetStudent">Get Student!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <form id="frmSubmitMarks" data-parsley-validate>
+
+                <input type="hidden" id="txtId" name="StudentId" />
+                <input type="hidden" id="txtClassId" name="ClassId" />
+                <input type="hidden" id="txtStreamId" name="StreamId" />
+
+                <label for="fullname">Name:</label>
+                <input type="text" id="txtStudentFullName" class="form-control" name="fullname" readonly="readonly" />
+
+                <label for="fullname">Adm No:</label>
+                <input type="text" id="txtAdmNumber" class="form-control" name="fullname" readonly="readonly" />
+
+                <label for="email">Class :</label>
+                <input type="email" id="txtClassName" class="form-control" name="email" data-parsley-trigger="change" readonly="readonly" />
+
+                <label for="email">Class Teacher :</label>
+                <input type="email" id="txtClassTeacher" class="form-control" name="email" data-parsley-trigger="change" readonly="readonly" />
+
+                <label for="heard">Select Subject:</label>
+
+                <select id="heard" class="form-control" required name="Subject">
+
+                    @if (ViewBag.Subjects != null)
+                    {
+                        foreach (var item in ViewBag.Subjects)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+                    }
+
+                </select>
+
+                <label for="heard">Term:</label>
+                <select id="heard" class="form-control" required name="Term">
+
+                    <option value="1">Term 1</option>
+                    <option value="2">Term 2</option>
+                    <option value="3">Term 3</option>
+
+                </select>
+
+
+                <label for="fullname">Enter Marks:</label>
+                <input type="text" id="txtMarks" class="form-control" name="Marks" required />
+
+                <br />
+                <span class="btn btn-success pull-right" id="btnSubmit"> Submit</span>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/sweetalart/sweetalert.min.css" rel="stylesheet" />
+<script src="~/Content/sweetalart/sweetalert.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+
+    $("#btnSubmit").click(function () {
+
+        var data = $("#frmSubmitMarks").serialize();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/ExamEntry/SubmitResult/",
+            data: data,
+
+            success: function (response) {
+                if (response.success) {
+
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+
+
+                    }), setTimeout(function () { location.reload(); }, 3000);
+
+                } else {
+
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+    $("#GetStudent").click(function () {
+                
+        var admNo = document.getElementById('admNo').value;
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Administrator/ExamEntry/GetStudentByAdmNo/?AdmNo=" + admNo,
+            success: function (response) {
+                if (response.success) {
+         
+                    console.log(response.responseText);
+
+                    $("#txtAdmNumber").val(response.responseText.AdmNumber);
+                    $("#txtAge").val(response.responseText.Age);
+                    $("#txtClassId").val(response.responseText.ClassId);
+                    $("#txtClassName").val(response.responseText.ClassName);
+                    $("#txtCreatedById").val(response.responseText.CreatedById);
+                    $("#txtId").val(response.responseText.Id);
+                    $("#txtStreamId").val(response.responseText.StreamId);
+                    $("#txtStreamName").val(response.responseText.StreamName);
+                    $("#txtStudentFullName").val(response.responseText.StudentFullName);
+                    $("#txtClassTeacher").val(response.responseText.ClassTeacher);
+
+                } else {
+
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 5000,
+                    });
+
+                }
+            },
+
+            error: function (response) {
+                alert("error!");  //
+
+            }
+        })
+
+    })
+
+
+
+
+
+    function GetStudent(e) {
+        debugger
+
+        var admNo = document.getElementById('admNo').value;
+
+        console.log(admNo);
+
+        $.get("/Administrator/ExamEntry/GetStudentByAdmNo1/?AdmNo=" + admNo, function (data, status) {
+
+
+
+            if (data.data == null) {
+
+                $('#divErrorSMS').show();
+
+
+            } else {
+
+                $("#txtAdmNumber").val(data.data.AdmNumber);
+                $("#txtAge").val(data.data.Age);
+                $("#txtClassId").val(data.data.ClassId);
+                $("#txtClassName").val(data.data.ClassName);
+                $("#txtCreatedById").val(data.data.CreatedById);
+                $("#txtId").val(data.data.Id);
+                $("#txtStreamId").val(data.data.StreamId);
+                $("#txtStreamName").val(data.data.StreamName);
+                $("#txtStudentFullName").val(data.data.StudentFullName);
+                $("#txtClassTeacher").val(data.data.ClassTeacher);
+
+            }
+
+
+        });
+
+
+    };
+
+
+
+
+</script>

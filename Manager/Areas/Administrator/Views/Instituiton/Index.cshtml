@@ -1,0 +1,163 @@
+﻿
+@model Manager.Data.DTOs.InstituitonModule.InstituitonDTO
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="x_panel">
+    <div class="x_title">
+        <h2>Form Design <small>different form elements</small></h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+        <br>
+        <form id="demo-form2" class="form-horizontal form-label-left" enctype="multipart/form-data">
+
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                    First Name <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="text" id="txtFirstName" required="required" class="form-control" name="Name">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label class="col-form-label col-md-3 col-sm-3 label-align" for="last-name">
+                    Email <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="text" id="last-name" name="Email" required="required" class="form-control">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Phone Number</label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input id="middle-name" class="form-control" type="text" name="PhoneNumber">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Postal Addrress</label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input id="middle-name" class="form-control" type="text" name="PostalAddrress">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">PostalCode</label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input id="middle-name" class="form-control" type="text" name="PostalCode">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">Town</label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input id="middle-name" class="form-control" type="text" name="Town">
+                </div>
+            </div>
+
+            <div class="item form-group">
+                <label for="middle-name" class="col-form-label col-md-3 col-sm-3 label-align">File </label>
+                <div class="col-md-6 col-sm-6 ">
+                    <input type="file" id="File_Upload" class="form-control" name="Image" />
+                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="item form-group">
+                <div class="col-md-6 col-sm-6 offset-md-3">
+                    <button class="btn btn-primary" type="button">Cancel</button>
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                    <button type="button" id="btnSubmit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<link href="~/Content/sweetalart/sweetalert.min.css" rel="stylesheet" />
+<script src="~/Content/sweetalart/sweetalert.min.js"></script>
+<script>
+        $('#btnSubmit').click(function (evt) {
+
+
+
+            if ($('#txtFirstName').val() == '') {
+                $('#txtFirstName').focus();
+            swal({
+                position: 'top-end',
+                type: "error",
+                title: "Test name is required",
+                showConfirmButton: true,
+            });
+
+            return false;
+        }
+
+
+
+        // Stop the button from submitting the form:
+        evt.preventDefault();
+
+        // Serialize the entire form:
+        var data = new FormData(this.form);
+
+
+        $.ajax({
+            url: "/Administrator/Instituiton/Create/", // NB: Use the correct action name
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+
+
+            //beforeSend: function () { ShowLoader(); },
+            success: function (response) {
+                if (response.success) {
+                    // Display success message
+                    swal({
+                        position: 'top-end',
+                        type: "success",
+                        title: response.responseText,
+                        showConfirmButton: false,
+                        // timer: 5000,
+
+                     @*}), setTimeout(function () { window.location = "/Doctor/PatientHealthProfile/Index/@ViewBag.ClientId"; }, 3000);*@
+
+                    }), setTimeout(function () { location.reload(); }, 3000);
+
+                } else {
+                    // Display error message
+                    swal({
+                        position: 'top-end',
+                        type: "error",
+                        title: response.responseText,
+                        showConfirmButton: true,
+                        timer: 3000,
+                    });
+
+                }
+            },
+
+
+            // Display error message from db
+            error: function (response) {
+                alert("error!");  //
+
+            },
+            //complete: function () {
+            //    HideLoader();
+            //}
+
+
+        });
+
+    });
+</script>
